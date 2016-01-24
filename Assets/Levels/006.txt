@@ -1,0 +1,19 @@
+#########################
+#   g                   #
+#  Ygggg     P          #
+# ggg       ppp         #
+#    y   ppp  p         #
+#     y       p         #
+#r     yyyyy  p      rrr#
+#           r p      ggg#
+#       ggggr p    gpppp#
+#r          r     ggprrr#
+#           r     g pr $#
+#           r     gprrrr#
+#gggg       r     gppppp#
+#           r     g######
+#         yyr     #     #
+#           r    #      #
+#           r       #   #
+# @   ggg  Rr       #  G#
+#########################
