@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour {
     public float maxSpeed;
     public float speed;
     public int jumpHeight;
+
+    private GameObject[] Board;
+    private LevelBuilder levelBuilder;
     private Rigidbody2D rb2d;
     private GameObject[] gameObjects;
     private GameObject walkedOver = null;
@@ -13,6 +16,8 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        Board = GameObject.FindGameObjectsWithTag("GameController");
+        levelBuilder = Board[0].GetComponent<LevelBuilder>();
     }
 
     void Update () {
@@ -39,29 +44,33 @@ public class PlayerController : MonoBehaviour {
             Jump();
         }
 
+        if (Input.GetKey("left ctrl"))
+        {
+            levelBuilder.LoadNextLevel();
+        }
+
         if (Input.GetKey("space"))
         {
             if(walkedOver != null)
             {
-                //Check the provided Collider2D parameter other to see if it is tagged "PickUp", if it is...
                 if (!walkedOver.CompareTag("Finish"))
                 {
                     gameObjects = GameObject.FindGameObjectsWithTag(walkedOver.tag);
-                    //Debug.Log(gameObjects);
                     for (int i = 0; i < gameObjects.Length; i++)
                     {
-                        //Debug.Log(gameObjects[i].layer);
-
                         if (gameObjects[i].layer == 9)
                         {
                             Destroy(gameObjects[i]);
                         }
                         else if (gameObjects[i].layer == 10)
                         {
-                            //Destroy(gameObjects[i]);
                             gameObjects[i].GetComponent<Collider2D>().enabled = false;
                         }
                     }
+                }
+                else
+                {
+                    levelBuilder.LoadNextLevel();
                 }
             }
         }

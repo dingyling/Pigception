@@ -6,18 +6,16 @@ using System;
 
 public class LevelBuilder : MonoBehaviour {
 
-    private string levelRAW;
-    private string levelName;
-    private string[] levelLines;
-    private int levelWidth;
-    private int levelHeight;
     private Vector2 startPos;
     private float PixelSize;
     private Vector2 tempPos;
     private GameObject obstacle;
     private GameObject door;
+    private FileInfo[] lvls;
+    private int numLvls;
+    private string lvlDir;
+    private int lvlNum;
 
-    public string level;
     public GameObject wall;
     public GameObject blank;
     public GameObject player;
@@ -34,7 +32,7 @@ public class LevelBuilder : MonoBehaviour {
     public GameObject door_y;
     public GameObject door_goal;
 
-    void quadrant (int a, int b, int c, int d, char l) {
+    void quadrant (int a, int b, int c, int d, char l, int levelWidth, int levelHeight, string[] levelLines) {
 
         int xGridFix = 0;
         int yGridFix = 0;
@@ -153,34 +151,73 @@ public class LevelBuilder : MonoBehaviour {
         return currentTag;
     }
 
+    FileInfo[] GetLevels(string Dir)
+    {
+        DirectoryInfo lvlDir = new DirectoryInfo(Dir);
+        FileInfo[] lvls = lvlDir.GetFiles("*.txt");
+
+        return lvls;
+    }
+
+    public void LoadNextLevel()
+    {
+        if (lvlNum > 0)
+        {
+            Transform[] oldObjects = transform.GetComponentsInChildren<Transform>();
+            foreach (Transform oldObject in oldObjects)
+            {
+                if (!(oldObject.tag == "GameController")) { 
+                    Destroy(oldObject.gameObject);
+                }
+            }
+        }
+        
+        if (lvlNum == numLvls)
+        {
+            lvlNum = 1;
+        }
+        else
+        {
+            lvlNum++;
+        }
+        
+        string lvlName = lvlDir + lvls[lvlNum-1].Name;
+        string lvlRAW = System.IO.File.ReadAllText(lvlName);
+        string[] lvlLines = lvlRAW.Split('\n');
+        int lvlWidth = lvlLines[0].Length - 1;
+        int lvlHeight = lvlLines.Length;
+        PixelSize = (float).64;
+
+        startPos = new Vector2(PixelSize / 2 * (lvlWidth - 1), PixelSize / 2 * (lvlHeight - 1));
+
+        //1st quadrant
+        quadrant(0, 0, 1, 1, 'r', lvlWidth, lvlHeight, lvlLines);
+
+        //2st quadrant
+        quadrant(0, 1, -1, 1, 'y', lvlWidth, lvlHeight, lvlLines);
+
+        //3st quadrant
+        quadrant(1, 0, 1, -1, 'g', lvlWidth, lvlHeight, lvlLines);
+
+        //4st quadrant
+        quadrant(1, 1, -1, -1, 'p', lvlWidth, lvlHeight, lvlLines);
+    }
+
+
     // Use this for initialization
     void Start () {
 
-        levelName = "Assets/Levels/" + level + ".txt";
-        levelRAW = System.IO.File.ReadAllText(levelName);
-        levelLines = levelRAW.Split('\n');
-        levelWidth = levelLines[0].Length-1;
-        levelHeight = levelLines.Length;
-        PixelSize = (float).64;
+        lvlDir = "Assets/Levels/";
+        lvls = GetLevels(lvlDir);
+        numLvls = lvls.Length;
+        lvlNum = 0;
 
-        startPos = new Vector2 (PixelSize / 2 * (levelWidth-1), PixelSize / 2 * (levelHeight - 1));
-        //Debug.Log(words[0][0]);
-
-        //1st quadrant
-        quadrant(0,0,1,1, 'r');
-
-        //2st quadrant
-        quadrant(0, 1, -1, 1, 'y');
-
-        //3st quadrant
-        quadrant(1, 0, 1, -1, 'g');
-
-        //4st quadrant
-        quadrant(1,1 , -1,-1, 'p');
+        LoadNextLevel();
+        
     }
 	
 	// Update is called once per frame
 	void Update () {
-	
+	    
 	}
 }
