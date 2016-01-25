@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11408738}
   - 58: {fileID: 5835744}
   m_Layer: 0
-  m_Name: PIG
+  m_Name: PIG.old
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

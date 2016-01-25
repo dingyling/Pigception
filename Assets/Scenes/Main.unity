@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wall: {fileID: 124698, guid: 25afe18b90b88f948ae650668c0fe37c, type: 2}
   blank: {fileID: 171334, guid: 770d23742c9176247a06b98664a35991, type: 2}
-  player: {fileID: 199798, guid: e71f175b8b25124438fa9b19c11328f4, type: 2}
+  player: {fileID: 142574, guid: f829029694c89c24db1f359fdb2e2f15, type: 2}
   blank_wc: {fileID: 117474, guid: cb4bd35c30d965144b9a7604f9b01480, type: 2}
   obstacle_g: {fileID: 188098, guid: df55eeb162182c848b444fb0138d8df2, type: 2}
   obstacle_r: {fileID: 179388, guid: 4e74fae95cb01ba4ebcbb004f8aefa48, type: 2}
@@ -271,6 +271,10 @@ Prefab:
       propertyPath: m_TagString
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 11445258, guid: ea0e40cee97562c45a9d9020749bcd02, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 142574, guid: f829029694c89c24db1f359fdb2e2f15, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea0e40cee97562c45a9d9020749bcd02, type: 2}
   m_IsPrefabParent: 0
