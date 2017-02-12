@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        Debug.Log(rb2d.velocity.x);
+        //Debug.Log(rb2d.velocity.x);
     }
 
     void ResetJump()

@@ -21,6 +21,7 @@ public class LevelBuilder : MonoBehaviour {
     public GameObject blank;
     public GameObject player;
     public GameObject blank_wc;
+    public GameObject blank_trigger;
 
     public GameObject obstacle_g;
     public GameObject obstacle_r;
@@ -38,6 +39,7 @@ public class LevelBuilder : MonoBehaviour {
         int xGridFix = 0;
         int yGridFix = 0;
         char[] obstacles = { 'r', 'g', 'y', 'p' };
+        char[] doors = { 'R', 'G', 'Y', 'P' };
 
         switch (l)
         {
@@ -71,15 +73,16 @@ public class LevelBuilder : MonoBehaviour {
                 if (levelLines[i][j] == '#')
                 {
                     Vector3 spawnPosition = new Vector3(-tempPos.x + PixelSize * j, tempPos.y - PixelSize * i, -1);
-                    GameObject oWall = new GameObject();
+
                     if (l == 'r') {
-                        oWall = Instantiate(wall_wc, spawnPosition, Quaternion.identity) as GameObject;
+                        GameObject oWall = Instantiate(wall_wc, spawnPosition, Quaternion.identity) as GameObject;
+                        oWall.transform.parent = transform;
                     }
                     else
                     {
-                        oWall = Instantiate(wall, spawnPosition, Quaternion.identity) as GameObject;
+                        GameObject oWall = Instantiate(wall, spawnPosition, Quaternion.identity) as GameObject;
+                        oWall.transform.parent = transform;
                     }
-                    oWall.transform.parent = transform;
                 }
                 else if (levelLines[i][j] == l)
                 {
@@ -128,6 +131,26 @@ public class LevelBuilder : MonoBehaviour {
                     GameObject oBlankWC = Instantiate(blank_wc, spawnPosition, Quaternion.identity) as GameObject;
                     oBlankWC.transform.parent = transform;
                     oBlankWC.tag = GetTag(levelLines[i][j]);
+                }
+                else if (l == 'r' && Array.IndexOf(doors, levelLines[i][j]) > -1)
+                {
+                    Vector3 spawnPosition = new Vector3(-tempPos.x + PixelSize * j, tempPos.y - PixelSize * i, -1);
+                    GameObject oBlank = Instantiate(blank_trigger, spawnPosition, Quaternion.identity) as GameObject;
+                    oBlank.transform.parent = transform;
+                    oBlank.layer = 8;
+
+                    switch (levelLines[i][j])
+                    {
+                        case 'Y':
+                            oBlank.tag = "yellow";
+                            break;
+                        case 'G':
+                            oBlank.tag = "green";
+                            break;
+                        case 'P':
+                            oBlank.tag = "purple";
+                            break;
+                    }
                 }
                 else
                 {

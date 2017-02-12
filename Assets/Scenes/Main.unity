@@ -209,8 +209,10 @@ MonoBehaviour:
   wall: {fileID: 124698, guid: 25afe18b90b88f948ae650668c0fe37c, type: 2}
   wall_wc: {fileID: 1668115839500356, guid: f5367593a6a13684da0e11f238768d90, type: 2}
   blank: {fileID: 171334, guid: 770d23742c9176247a06b98664a35991, type: 2}
-  player: {fileID: 142574, guid: f829029694c89c24db1f359fdb2e2f15, type: 2}
+  player: {fileID: 1604550739353650, guid: d2421fdc17f5a4c4c81f75b0e2c62a1c, type: 2}
   blank_wc: {fileID: 117474, guid: cb4bd35c30d965144b9a7604f9b01480, type: 2}
+  blank_trigger: {fileID: 1651009200621808, guid: 58901d3a5277cd94c8b2c9b2fbc43cc9,
+    type: 2}
   obstacle_g: {fileID: 188098, guid: df55eeb162182c848b444fb0138d8df2, type: 2}
   obstacle_r: {fileID: 1760334445342148, guid: 4e74fae95cb01ba4ebcbb004f8aefa48, type: 2}
   obstacle_p: {fileID: 135896, guid: 712ba654f3b3dc4469d60882ec600d35, type: 2}
@@ -283,7 +285,8 @@ Prefab:
     - target: {fileID: 11445258, guid: ea0e40cee97562c45a9d9020749bcd02, type: 2}
       propertyPath: player
       value: 
-      objectReference: {fileID: 142574, guid: f829029694c89c24db1f359fdb2e2f15, type: 2}
+      objectReference: {fileID: 1604550739353650, guid: d2421fdc17f5a4c4c81f75b0e2c62a1c,
+        type: 2}
     - target: {fileID: 11445258, guid: ea0e40cee97562c45a9d9020749bcd02, type: 2}
       propertyPath: wall_wc
       value: 
@@ -293,6 +296,11 @@ Prefab:
       propertyPath: obstacle_r
       value: 
       objectReference: {fileID: 1760334445342148, guid: 4e74fae95cb01ba4ebcbb004f8aefa48,
+        type: 2}
+    - target: {fileID: 11445258, guid: ea0e40cee97562c45a9d9020749bcd02, type: 2}
+      propertyPath: blank_trigger
+      value: 
+      objectReference: {fileID: 1651009200621808, guid: 58901d3a5277cd94c8b2c9b2fbc43cc9,
         type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ea0e40cee97562c45a9d9020749bcd02, type: 2}
