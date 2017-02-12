@@ -15,6 +15,8 @@ public class LevelBuilder : MonoBehaviour {
     private int numLvls;
     private string lvlDir;
     private int lvlNum;
+    private int lvlWidth;
+    private int lvlHeight;
 
     public GameObject wall;
     public GameObject wall_wc;
@@ -218,8 +220,8 @@ public class LevelBuilder : MonoBehaviour {
         string lvlName = lvlDir + lvls[lvlNum-1].Name;
         string lvlRAW = System.IO.File.ReadAllText(lvlName);
         string[] lvlLines = lvlRAW.Split('\n');
-        int lvlWidth = lvlLines[0].Length - 1;
-        int lvlHeight = lvlLines.Length;
+        lvlWidth = lvlLines[0].Length - 1;
+        lvlHeight = lvlLines.Length;
         PixelSize = (float).64;
 
         startPos = new Vector2(PixelSize / 2 * (lvlWidth - 1), PixelSize / 2 * (lvlHeight - 1));
@@ -237,6 +239,12 @@ public class LevelBuilder : MonoBehaviour {
         quadrant(1, 1, -1, -1, 'p', lvlWidth, lvlHeight, lvlLines);
     }
 
+    public Vector3 GetOffset()
+    {
+        Vector3 offset = new Vector3(lvlWidth * PixelSize , - (lvlHeight-1) * PixelSize, 0);
+
+        return offset;
+    }
 
     // Use this for initialization
     void Start () {
@@ -252,6 +260,6 @@ public class LevelBuilder : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    
+
 	}
 }

@@ -315,7 +315,6 @@ MonoBehaviour:
   player2: {fileID: 1921280475450384}
   player3: {fileID: 1136636890339376}
   player4: {fileID: 1900567677335040}
-  offset: {x: 15.36, y: -11.52, z: 0}
 --- !u!114 &114803040567424470
 MonoBehaviour:
   m_ObjectHideFlags: 1
