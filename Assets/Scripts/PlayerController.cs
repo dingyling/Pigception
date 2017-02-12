@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour {
 
         if (Input.GetKeyDown("up"))
         {
+           
+            Debug.Log(isGrounded);
             //if (Physics2D.Raycast(transform.position, Vector3.down, 1.0f) == true ) {
             if (isGrounded)
             {
@@ -68,6 +70,18 @@ public class PlayerController : MonoBehaviour {
             
             //}
         }
+
+        if (Input.GetKeyUp("left") || Input.GetKeyUp("right"))
+        {
+            //if (Physics2D.Raycast(transform.position, Vector3.down, 1.0f) == true ) {
+            if (!isGrounded)
+            {
+                rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+            }
+            
+            //}
+        }
+
 
         if (Input.GetKey("left ctrl"))
         {
