@@ -1,19 +1,19 @@
-#########################
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-#    r    g     y   p   #
-# @ Rr   Gg    Yy  Pp  $#
-#########################
+###################################
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+#    r    g     y   p             #
+# @ Rr   Gg    Yy  Pp            $#
+###################################

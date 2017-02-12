@@ -9,6 +9,7 @@ TagManager:
   - green
   - purple
   - otherColliders
+  - Clone
   layers:
   - Default
   - TransparentFX
@@ -60,4 +61,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 4173414179
+    locked: 0
+  - name: 
+    uniqueID: 2269158867
     locked: 0

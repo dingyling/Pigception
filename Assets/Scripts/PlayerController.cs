@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     public int jumpHeight;
 
     private GameObject[] Board;
+    private GameObject[] clones;
     private LevelBuilder levelBuilder;
     private Rigidbody2D rb2d;
     private GameObject[] gameObjects;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
         Board = GameObject.FindGameObjectsWithTag("GameController");
         levelBuilder = Board[0].GetComponent<LevelBuilder>();
+        clones = GameObject.FindGameObjectsWithTag("Clone");
     }
 
     void Update() {
@@ -32,6 +34,11 @@ public class PlayerController : MonoBehaviour {
                 rb2d.AddForce(new Vector2(-speed, 0));
             }
             transform.eulerAngles = new Vector2(0, 180);
+
+            for (int i = 0; i < clones.Length; i++)
+            {
+                clones[i].transform.eulerAngles = new Vector2(0, 180);
+            }
         }
 
         if (Input.GetKey("right"))
@@ -41,6 +48,11 @@ public class PlayerController : MonoBehaviour {
                 rb2d.AddForce(new Vector2(speed, 0));
             }
             transform.eulerAngles = new Vector2(0, 0);
+
+            for (int i = 0; i < clones.Length; i++)
+            {
+                clones[i].transform.eulerAngles = new Vector2(0, 0);
+            }
         }
 
         if (Input.GetKeyDown("up"))

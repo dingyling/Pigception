@@ -126,7 +126,7 @@ public class LevelBuilder : MonoBehaviour {
                     GameObject oBlank = Instantiate(blank, spawnPosition, Quaternion.identity) as GameObject;
                     oBlank.transform.parent = transform;
                 }
-                else if (Array.IndexOf(obstacles, levelLines[i][j]) >= 0) {
+                else if (l == 'r' && Array.IndexOf(obstacles, levelLines[i][j]) >= 0) {
                     Vector3 spawnPosition = new Vector3(-tempPos.x + PixelSize * j, tempPos.y - PixelSize * i, -1);
                     GameObject oBlankWC = Instantiate(blank_wc, spawnPosition, Quaternion.identity) as GameObject;
                     oBlankWC.transform.parent = transform;
