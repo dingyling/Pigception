@@ -17,6 +17,7 @@ public class LevelBuilder : MonoBehaviour {
     private int lvlNum;
 
     public GameObject wall;
+    public GameObject wall_wc;
     public GameObject blank;
     public GameObject player;
     public GameObject blank_wc;
@@ -70,7 +71,14 @@ public class LevelBuilder : MonoBehaviour {
                 if (levelLines[i][j] == '#')
                 {
                     Vector3 spawnPosition = new Vector3(-tempPos.x + PixelSize * j, tempPos.y - PixelSize * i, -1);
-                    GameObject oWall = Instantiate(wall, spawnPosition, Quaternion.identity) as GameObject;
+                    GameObject oWall = new GameObject();
+                    if (l == 'r') {
+                        oWall = Instantiate(wall_wc, spawnPosition, Quaternion.identity) as GameObject;
+                    }
+                    else
+                    {
+                        oWall = Instantiate(wall, spawnPosition, Quaternion.identity) as GameObject;
+                    }
                     oWall.transform.parent = transform;
                 }
                 else if (levelLines[i][j] == l)
@@ -99,8 +107,11 @@ public class LevelBuilder : MonoBehaviour {
                 else if (levelLines[i][j] == '@')
                 {
                     Vector3 spawnPosition = new Vector3(-tempPos.x + PixelSize * j, tempPos.y - PixelSize * i, -1);
-                    GameObject oPlayer = Instantiate(player, spawnPosition, Quaternion.identity) as GameObject;
-                    oPlayer.transform.parent = transform;
+
+                    if (l == 'r') { 
+                        GameObject oPlayer = Instantiate(player, spawnPosition, Quaternion.identity) as GameObject;
+                        oPlayer.transform.parent = transform;
+                    }
 
                     spawnPosition = new Vector3(-tempPos.x + PixelSize * j, tempPos.y - PixelSize * i, -1);
                     GameObject oBlank = Instantiate(blank, spawnPosition, Quaternion.identity) as GameObject;
