@@ -26,7 +26,10 @@ public class PlayerController : MonoBehaviour {
         clones = GameObject.FindGameObjectsWithTag("Clone");
     }
 
+
     void Update() {
+        clones = GameObject.FindGameObjectsWithTag("Clone");
+
         if (Input.GetKey("left"))
         {
             if (rb2d.velocity.x > -maxSpeed)
